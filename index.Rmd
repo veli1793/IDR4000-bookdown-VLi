@@ -1,60 +1,65 @@
---- 
-title: "A Minimal Book Example"
-author: "John Doe"
+---
+title: "Mappeeksamen"
+author: "101"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: [book.bib, packages.bib]
-# url: your book url like https://bookdown.org/yihui/bookdown
-# cover-image: path to the social sharing image like images/cover.jpg
-description: |
-  This is a minimal example of using the bookdown package to write a book.
-  The HTML output format for this example is bookdown::gitbook,
-  set in the _output.yml file.
-link-citations: yes
-github-repo: rstudio/bookdown-demo
+bibliography: book.bib
+link-citations: no
 ---
 
-# About
+# Reliabilitet
 
-This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports; for example, a math equation $a^2 + b^2 = c^2$.
+## Introduction
 
-## Usage 
+When testing in exercise physiology you need tests that are reliable. Reliability refers to the ability to reproduce measurements from time to time. This is important to discover any possible measurement error which may make the observed value different from the true value. A reliable test should measure what is supposed to be measured. For example, a test is reliable if it produces the same results within the same conditions from time to time @hopkins2000. Reliable tests are important for example when studying whether a training intervention will improve maximal oxygen consumption or not [@peng2006]. If the test is not reliable it can not tell us if the improvements in oxygen consumption is true or due to measurement error. To be sure a test is reliable it will be useful to perform a reliability study. This is done by include enough participants and several trials in the same test with well done preparations and standardization. Measurement error can be detected in several ways. It is common to look at the individual variation from one trial to another. A good measure of reliability is the typical error of the percentage of the mean (CV). This means the average variation within individuals from between tests [@hopkins2000].
 
-Each **bookdown** chapter is an .Rmd file, and each .Rmd file can contain one (and only one) chapter. A chapter *must* start with a first-level heading: `# A good chapter`, and can contain one (and only one) first-level heading.
+## Method
 
-Use second-level and higher headings within chapters like: `## A short section` or `### An even shorter section`.
+Nine healthy sports science students participated in this reliability study. They performed a one repetition-maximum (1RM) strength test in leg press on two occasions. Trials were performed one week apart at the same time of the day. Activity the day before and energy intake at test days were individually standardized. 1RM leg press tests were performed with the Keiser Air 300 leg press machine. To establish reliability of the measure, participants had the same test leader. Also the number and gender of observers in the room was the same for both test occasions [@halperin2015].
 
-The `index.Rmd` file is required, and is also your first book chapter. It will be the homepage when you render the book.
+#### Preperation
 
-## Render book
+Before the 1RM test, the Keiser Air 300 machine was individually customized. Participants performed the test without shoes with legs on separate force plates and 90° in the knee joint. Seat length and leg position on the footplate were recorded for each individual to ensure similar conditions in both tests.
 
-You can render the HTML version of this example book without changing anything:
+Three warm-up sets were performed before the 1RM test consisting of 8, 6 and 4 repetitions with increasing resistance and one minute rest in between. The resistance of the warm-up sets were recorded, to be repeated in post test.
 
-1. Find the **Build** pane in the RStudio IDE, and
+#### One repetition maximum test (1RM)
 
-1. Click on **Build Book**, then select your output format, or select "All formats" if you'd like to use multiple formats from the same book source files.
+After warm-up sets, participants rested for one minute followed by a maximum of five trials to reach 1RM. In between each trial they rested for three minutes. The resistance gradually increased and was of each trial was recorded. The maximum weight the participants manage to perform with correct technique was noted as 1RM.
 
-Or build the book from the R console:
+## Results and discussion
 
-```{r, eval=FALSE}
-bookdown::render_book()
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+
+library (readxl)
+library (tidyverse)
+library (knitr)
+library (kableExtra)
+
+
+  reliability_data <- read_excel("data/reliability_data.xlsx") %>%
+  mutate (diff = Pre - Post) %>%
+  
+  summarise (s = round(sd (diff), 2),
+    te = round(s / sqrt (2), 2), 
+    m = round(mean (c(Pre, Post)), 2), 
+    cv = round((te/m) * 100, 2))
+  
+  cv <- round(reliability_data$cv, 2)
+
+
 ```
 
-To render this example to PDF as a `bookdown::pdf_book`, you'll need to install XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.org/tinytex/>.
 
-## Preview book
-
-As you work, you may start a local server to live preview this HTML book. This preview will update as you edit the book when you save individual .Rmd files. You can start the server in a work session by using the RStudio add-in "Preview book", or from the R console:
-
-```{r eval=FALSE}
-bookdown::serve_book()
+```{r, message=FALSE, warning=FALSE, echo=FALSE, results='asis'}
+reliability_data %>% 
+  kable(format="latex",  
+        col.names = c("SD", "TE", "Mean (kg)", "CV (%)"),
+        caption = "Table 1. Descriptive statistics from repeated 1RM tests (n = 9).") %>%
+        add_footnote(label= "SD = Standard deviation, TE = Typical error, CV = Coefficient of variation",
+                     notation = "none") %>%
+  kable_styling(latex_options = "striped") 
 ```
 
-
-```{r include=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
-), 'packages.bib')
-```
+The typical percentage error (CV) of the test was `r cv`%. This means that the variation between pre and post test is `r cv`% of the mean. Compared to @schroeder2007 our results of CV is smaller (\< 6.3%), and the test seems to be acceptable and reliable. This is a small variation and the test seems to be reliable. It may be explained by elimination of measurement errors because of standardized preparation and test procedures. The small variation that was found in this reliability test may be explained by day-to-day variations which can be physiological and psychological factors, for example motivation and fatigue [@schroeder2007].

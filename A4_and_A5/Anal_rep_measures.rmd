@@ -1,0 +1,286 @@
+---
+title: "Analyzing repeated measures"
+author: '101'
+date: "24 2 2022"
+output: pdf_document
+---
+
+## Introduction
+
+It is well known that muscles in humans can grow stronger. Many studies have investigated how this phenomenon is working. Some humans responds more to resistance training than others, leaving that genetically factors plays a role for muscle gains and strength [@timmons2011]. While some previous studies shows evidence that resistance training is enhancing performance in elite sports [@vikmoen2017], other studies also shows that healthy older adults and older adults with chronic disease get stronger with resistance training [@molmen2021]. This means strength training likely has beneficial impact on health aspects on different populations, and it will therefore be important to know more about this subject for the future.
+
+As mentioned humans responds differently to resistance training due to genetic factors. Given the same training volume, some people responds more than others, which we call high responders and those who doesn't seem to respond much to strength training, are called low responders [@haun2019]. @haun2019 are mentioning biomarkers like ribosome biogenesis, insulin-like growth factor 1 and muscle androgen reseptor content gets more up-regulated in high responders versus low responders, as well as greater degree in satelitte cell proliferation in high responders. What @haun2019 found though, was that high responders got more growth potential due to lower PRE type II fiber cross-sectional area values, and possessing a higher percentage of type II fibers. To get an optimal effect of doing resistance training we will need to find the optimal training volume protocol for each individual, whether they are beginners or trained individuals. @paulsen2003 found that the upper-body muscles only needed one-set per muscle-group to get a response equal to three-sets in the early phase of adaption, while the lower body needed all three sets to get a significant response compared to PRE-values. The reason for this might be that the lower-body is used in daily work which we call anti-gravity muscles, carrying the upper-body every day and therefore requires more stimulus than the upper-body [@paulsen2003].
+
+The level of muscle mass in fiber cross-sectional area is said to be an important factor for how much strength an individual has [@hughes2018]. Since the training volume is important to make enough stimulus to the muscles, we want to check if multiple sets improves strength and lean mass better than single set in strength training for legs. The exercise legextension was selected to measure strength improvement to limit the number of muscles playing a role for strength gains.
+
+## Methods
+
+#### Participants and overview
+
+Data about the participants are presented in (table 1).
+
+41 participants in age 18 - 40 years were recruited to this study. Exclusion criteria were smoking individuals, impaired muscle strength in the legs due to injury, more than one weekly strength training session in the last 12 months, intolerance to local anesthetic and intake of medicine that could affect the training outcome. Seven participants were excluded in the data analysis for not completing at least 85% of the training intervention. All participants had previous experience of doing sport activities like cross-country skiing, team-sport and gymnastics. The length of the intervention was 12 week which consisted of 12 week full body strength training. Every participant performed both multiple sets and single set protocol where both legs were randomly assigned one of the protocol, which allowed training volume differentiation within each participant.
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+library(tidyverse) # for data wrangling
+library(flextable)
+library(exscidata)
+library(ggtext)
+
+data("dxadata")
+
+dxadata %>% # take the dxadata data set
+  select(participant, time, sex, include:weight, fat.whole) %>% 
+  # select participant, time, sex, include to height and fat.whole
+  
+  # Filter to keep all observations with pre
+  filter(time == "pre") %>%
+  
+  # Calculate body fat
+  # fat.whole in grams, needs to be divided by 1000 to express as kg
+  # Multiply by 100 to get percentage
+  mutate(fat.whole = ((fat.whole/1000) / weight) * 100) %>%
+  
+  # Group the data frame and add a variable specifying the number of observations per group
+  group_by(include, sex) %>%
+  mutate(n = n()) %>%
+  # Collect all variables for convenient summarizing
+  pivot_longer(names_to = "variable", 
+               values_to = "value", 
+               cols = age:n) %>%
+  # Create a new grouping, adding variable
+  group_by(include, sex, variable) %>%
+  # Summarize in two new variables m for mean and s for SD
+  summarise(m = mean(value), 
+            s = sd(value)) %>%
+  # Add descriptive statistics together for nice formatting
+  mutate(ms = if_else(variable == "n", # If the variable is n
+                      as.character(m), # the only display the mean, otherwise:
+                        paste0(signif(m, 3), # Use signif to round to significant numbers
+                        " (",
+                        signif(s, 3), 
+                        ")")), 
+         # Doing a new grouping variable
+         include_sex = paste(include, sex, sep = "_")) %>%
+  # removing unnecessary variables after ungrouping
+  ungroup() %>%
+
+  select(-sex, -include, -m, -s) %>%
+  # pivot wider to match the desired data
+  pivot_wider(names_from = include_sex, 
+              values_from = ms) %>%
+    mutate(variable = factor(variable, levels = c("n", "age", "weight", "height", "fat.whole"), 
+                           labels = c("N", "Age (years)", "Mass (kg)", 
+                                      "Stature (cm)", "Body fat (%)"))) %>%
+  select(variable, incl_female, excl_female, incl_male, excl_male) %>%
+  arrange(variable) %>%
+   flextable()  %>%
+   set_header_labels(variable = "",
+                    incl_female = "Include", 
+                     excl_female = "Exclude",
+                     incl_male = "Include", 
+                     excl_male = "Exclude") %>%
+     # Adds a header specified for all columns of the table
+    add_header_row(values = c("", "Female", "Female", "Male", "Male")) %>%
+    
+    # Merge the new cells with the same data
+    # part = "header" means that we want to add a row in the "header" part of the table.
+    # i = 1 means row 1
+    # j = 2:3 means column 2 to 3
+    merge_at(part = "header", i = 1, j = 2:3) %>%
+    merge_at(part = "header", i = 1, j = 4:5) %>%
+    # Add footnote
+    add_footer_row(values = "Table 1: Values are mean and (SD)", colwidths = 5) %>%
+    # Make the columns widths match the content
+    autofit()
+```
+
+Following tests and measurements were performed during the study:
+
+-   Isokinetic and isometric unilateral knee-extension
+
+-   One repetition-maximum (1RM) unilateral leggpress and knee-extension
+
+-   Muscle cross sectional area (CSA) and body composition
+
+-   Muscle tissue sampling
+
+-   Hormonal measurements
+
+Isokinetic and isometric unilateral knee-extension was performed on a dynamometer, with maximal torque on 60, 120 and 240 grade \* sec^-1^. The participants were familiarized with the test protocol by performing three submaximal tests at each angular speed. Two attempts were given at 60 grade \* sec^-1^, and three attempts on 120 and 240 grade \* sec-1. The highest score obtained was used for analyses. Towards the 1RM tests, the protocol contained a spesific warm-up of ten, six and three repetitions at 50, 75 and 85% of anticipated maximum before each of the exercise. Then the participants were given six attempts to find 1RM. The last weigth lifted at full range motion was accepted as 1RM. Muscle cross sectional area was measured on vastus lateralis, medialis, intermedius and rectus femoris, before and after training intervention using magnetic resonance imaging (MRI). Dual-energy X-ray absorptiometry (DXA) was used to measure body composition before and after the training intervention. The participants were told to stay fasted for 2 hours and refrain from any hard physical activity 48 hours before the measurements. Muscle biopsies were sampled using a 12-gauge needle biopsy instrument on vastus lateralis from both legs under local anesthesia. The time-points were in week 0 (at baseline), in rested state before session 5 in week 2, acute-phase after session 5 and after the intervention in rested state 3 to 6 days after the last session. There were performed 5 blood samples through the intervention to perform hormone analysis in the lab. The time-points for blood sampling were the same as the 4 muscle tissue sampling, including 1 sample 10 minutes after session 5.
+
+#### Statistics
+
+All of the statistical analysis were done in RStudio (Version 1.4.1717). The descriptive statistics are presented as mean (standard deviation), and the table was made with use of "flextable" package. It was used Mixed-ANCOVA models to analyse the difference between singel and multiple sets in "load leg-extension" from the strengthvolume data set and "lean mass" calculated from the dxadata data set, both data set from the "exscidata" package. The reason for using an ANCOVA model is to show the difference between sets in post when pre at both sets has the same baseline, since we have to take into account that the dominant leg can create biased data. A plot for both "load leg extension" and "lean mass" were created with the "tidyverse" package including ggplot2. Combining "lmerTest", "emmeans" and "pbkrtest" packages it was possible to get model estimates with coefficients accounting for participant with repeated measures, which will create a MIxed-ANCOVA.
+
+## Results
+
+In lean mass the difference between multiple and single was 118 gram in favor of multiple sets (95% Confidence interval [183, 398], p \> 0.05). In load leg extension the difference was 4.4 kg in favor of multiple sets (95% Confidence interval [28, 36], p \> 0.05).
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, results='hide'}
+
+library(lmerTest)
+library(emmeans)
+library(pbkrtest)
+library(knitr)
+
+data("dxadata")
+
+# Reducing and preparing data set
+dxadata_reduced <- dxadata %>%
+  select(participant:include, lean.left_leg, lean.right_leg) %>%
+  pivot_longer(names_to = "leg", 
+               values_to = "lean.mass", 
+               cols = lean.left_leg:lean.right_leg) %>%
+  mutate(leg = if_else(leg == "lean.left_leg", "L", "R"), 
+         sets = if_else(multiple == leg, "multiple", "single")) %>%
+  select(participant, time, sex, include, sets, leg, lean.mass) 
+
+  
+dat <- dxadata_reduced %>%  
+  filter(time %in% c("pre", "post")) %>%
+  mutate(time = factor(time, levels = c("pre", "post")), 
+         group = factor(sets,  levels = c("multiple", "single")))
+
+
+
+m1 <- lmer(lean.mass ~ time * sets + (1|participant), data = dat)
+
+
+summary(m1)
+
+# Using the model (m1) we can specify the emmeans function to get model estimates
+
+# The specs argument specifies what means to calculate from the model.
+# The code below takes care of the full model (including interactions).
+est <- emmeans(m1, specs = ~ time|sets)
+
+
+# Save the confidence intervals
+conf_intervals <- confint(m1)
+
+# Save the regression coefficients
+coefs <- summary(m1)$coef
+
+# Using cbind (column bind) to combine the two data frames
+coef_summary <- cbind(coefs, data.frame(conf_intervals)[1:4, ]) 
+
+# Print the table in a pretty format
+
+coef_summary %>%
+  kable()
+
+```
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, fig.cap="Mean values in pre and post in both multiple sets and single sets. The errorbars up and down the mean points are 95% confidence interval. The other lines are raw scores from each participant."}
+
+
+est %>%
+  data.frame() %>%
+  
+  ggplot(aes(time, emmean, group = sets, color = sets) ) + 
+  
+  # Adds raw data
+  geom_line(data = dat, aes(time, lean.mass, group = participant, color = sets), 
+            # Add transparency to individual lines
+            alpha = 0.4) +
+  
+  geom_errorbar(aes(ymin = lower.CL, ymax = upper.CL), 
+                position = position_dodge(width = 0.2), 
+                width = 0.1) +
+  geom_line(position = position_dodge(width = 0.2)) +
+  geom_point(position = position_dodge(width = 0.2)) +
+  
+  labs(title = "Pre to post Lean mass Legs", 
+       subtitle = "Multiple sets vs Single set",
+       y = "Lean mass (gram)") +
+  
+  theme_minimal()
+
+
+```
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, results='hide'}
+
+data("strengthvolume")
+
+
+strengthvolume %>%
+  group_by(exercise) %>%
+  mutate(scaled.load = load / max(load, na.rm = TRUE)) %>%
+  group_by(participant, time, sex, sets) %>%
+  summarise(combined.load = mean(scaled.load, na.rm = TRUE)) %>%
+  ungroup() %>%
+  print()
+# Preparing dataset
+dat2 <- strengthvolume %>%
+  filter(exercise == "legext", 
+         time %in% c("pre", "post")) %>%
+  mutate(time = factor(time, levels = c("pre", "post")), 
+         group = factor(sets,  levels = c("multiple", "single"))) %>%
+  print()
+
+
+m2 <- lmer(load ~ time * sets + (1|participant), data = dat2)
+
+
+summary(m2)
+
+# Using the model (m2) we can specify the emmeans function to get model estimates
+
+# The specs argument specifies what means to calculate from the model.
+# The code below takes care of the full model (including interactions).
+est2 <- emmeans(m2, specs = ~ time|sets)
+
+
+
+# Save the confidence intervals
+conf_intervals <- confint(m2)
+
+# Save the regression coefficients
+coefs <- summary(m2)$coef
+
+# Using cbind (column bind) to combine the two data frames
+coef_summary <- cbind(coefs, data.frame(conf_intervals)[1:4, ]) 
+
+# Print the table in a pretty format
+
+coef_summary %>%
+  kable()
+
+```
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, fig.cap="Mean values in pre and post in both multiple sets and single set. The errorbars up and down the mean points are 95% confidence interval. The other lines are raw scores from each participant."}
+
+
+est2 %>%
+  data.frame() %>%
+  
+  ggplot(aes(time, emmean, group = sets, color = sets) ) + 
+  
+  # Adds raw data
+  geom_line(data = dat2, aes(time, load, group = participant, color = sets), 
+            # Add transparency to individual lines
+            alpha = 0.4) +
+  
+  geom_errorbar(aes(ymin = lower.CL, ymax = upper.CL), 
+                position = position_dodge(width = 0.2), 
+                width = 0.1) +
+  geom_line(position = position_dodge(width = 0.2)) +
+  geom_point(position = position_dodge(width = 0.2)) +
+  
+  
+  labs(title = "Pre to post 1RM Legextension", 
+       subtitle = "Multiple sets vs Single set",
+       y = "Legextension 1RM load (kg)") +
+  
+  theme_minimal()
+
+
+```
+
+## Discussion
+
+There was no significant values between multiple sets and single set in neigther lean mass nor load leg extension in p-values. However, the confidence data do not show much gap in both data set, meaning that there is a larger effect of multiple sets compared to single set in both load leg extension and lean mass. The present study does not fully agree with @paulsen2003 and @ronnestad2007 which found three sets superior to one set in leg exercises.
+
+## Reference

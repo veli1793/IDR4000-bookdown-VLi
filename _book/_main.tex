@@ -4,14 +4,13 @@
 %
 \documentclass[
 ]{book}
+\usepackage{amsmath,amssymb}
 \usepackage{lmodern}
-\usepackage{amsmath}
 \usepackage{ifxetex,ifluatex}
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
-  \usepackage{amssymb}
 \else % if luatex or xetex
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
@@ -37,52 +36,12 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-  pdftitle={A Minimal Book Example},
-  pdfauthor={John Doe},
+  pdftitle={Mappeeksamen},
+  pdfauthor={101},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{248,248,248}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\BuiltInTok}[1]{#1}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
-\newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ImportTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{#1}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\usepackage{longtable,booktabs}
+\usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -110,15 +69,29 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
 \usepackage{booktabs}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 \ifluatex
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
 \usepackage[]{natbib}
 \bibliographystyle{plainnat}
 
-\title{A Minimal Book Example}
-\author{John Doe}
-\date{2021-11-30}
+\title{Mappeeksamen}
+\author{101}
+\date{2022-02-24}
 
 \begin{document}
 \maketitle
@@ -127,138 +100,102 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\hypertarget{about}{%
-\chapter{About}\label{about}}
+\hypertarget{reliabilitet}{%
+\chapter{Reliabilitet}\label{reliabilitet}}
 
-This is a \emph{sample} book written in \textbf{Markdown}. You can use anything that Pandoc's Markdown supports; for example, a math equation \(a^2 + b^2 = c^2\).
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
 
-\hypertarget{usage}{%
-\section{Usage}\label{usage}}
+When testing in exercise physiology you need tests that are reliable. Reliability refers to the ability to reproduce measurements from time to time. This is important to discover any possible measurement error which may make the observed value different from the true value. A reliable test should measure what is supposed to be measured. For example, a test is reliable if it produces the same results within the same conditions from time to time \citet{hopkins2000}. Reliable tests are important for example when studying whether a training intervention will improve maximal oxygen consumption or not \citep{peng2006}. If the test is not reliable it can not tell us if the improvements in oxygen consumption is true or due to measurement error. To be sure a test is reliable it will be useful to perform a reliability study. This is done by include enough participants and several trials in the same test with well done preparations and standardization. Measurement error can be detected in several ways. It is common to look at the individual variation from one trial to another. A good measure of reliability is the typical error of the percentage of the mean (CV). This means the average variation within individuals from between tests \citep{hopkins2000}.
 
-Each \textbf{bookdown} chapter is an .Rmd file, and each .Rmd file can contain one (and only one) chapter. A chapter \emph{must} start with a first-level heading: \texttt{\#\ A\ good\ chapter}, and can contain one (and only one) first-level heading.
+\hypertarget{method}{%
+\section{Method}\label{method}}
 
-Use second-level and higher headings within chapters like: \texttt{\#\#\ A\ short\ section} or \texttt{\#\#\#\ An\ even\ shorter\ section}.
+Nine healthy sports science students participated in this reliability study. They performed a one repetition-maximum (1RM) strength test in leg press on two occasions. Trials were performed one week apart at the same time of the day. Activity the day before and energy intake at test days were individually standardized. 1RM leg press tests were performed with the Keiser Air 300 leg press machine. To establish reliability of the measure, participants had the same test leader. Also the number and gender of observers in the room was the same for both test occasions \citep{halperin2015}.
 
-The \texttt{index.Rmd} file is required, and is also your first book chapter. It will be the homepage when you render the book.
+\hypertarget{preperation}{%
+\subsubsection{Preperation}\label{preperation}}
 
-\hypertarget{render-book}{%
-\section{Render book}\label{render-book}}
+Before the 1RM test, the Keiser Air 300 machine was individually customized. Participants performed the test without shoes with legs on separate force plates and 90° in the knee joint. Seat length and leg position on the footplate were recorded for each individual to ensure similar conditions in both tests.
 
-You can render the HTML version of this example book without changing anything:
+Three warm-up sets were performed before the 1RM test consisting of 8, 6 and 4 repetitions with increasing resistance and one minute rest in between. The resistance of the warm-up sets were recorded, to be repeated in post test.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  Find the \textbf{Build} pane in the RStudio IDE, and
-\item
-  Click on \textbf{Build Book}, then select your output format, or select ``All formats'' if you'd like to use multiple formats from the same book source files.
-\end{enumerate}
+\hypertarget{one-repetition-maximum-test-1rm}{%
+\subsubsection{One repetition maximum test (1RM)}\label{one-repetition-maximum-test-1rm}}
 
-Or build the book from the R console:
+After warm-up sets, participants rested for one minute followed by a maximum of five trials to reach 1RM. In between each trial they rested for three minutes. The resistance gradually increased and was of each trial was recorded. The maximum weight the participants manage to perform with correct technique was noted as 1RM.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{bookdown}\SpecialCharTok{::}\FunctionTok{render\_book}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
+\hypertarget{results-and-discussion}{%
+\section{Results and discussion}\label{results-and-discussion}}
 
-To render this example to PDF as a \texttt{bookdown::pdf\_book}, you'll need to install XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): \url{https://yihui.org/tinytex/}.
+\begin{table}
 
-\hypertarget{preview-book}{%
-\section{Preview book}\label{preview-book}}
+\caption{\label{tab:unnamed-chunk-2}Table 1. Descriptive statistics from repeated 1RM tests (n = 9).}
+\centering
+\begin{tabular}[t]{r|r|r|r}
+\hline
+SD & TE & Mean (kg) & CV (\%)\\
+\hline
+\cellcolor{gray!6}{8.7} & \cellcolor{gray!6}{6.15} & \cellcolor{gray!6}{286.94} & \cellcolor{gray!6}{2.14}\\
+\hline
+\multicolumn{4}{l}{\textsuperscript{} SD = Standard deviation, TE = Typical}\\
+\multicolumn{4}{l}{error, CV = Coefficient of variation}\\
+\end{tabular}
+\end{table}
 
-As you work, you may start a local server to live preview this HTML book. This preview will update as you edit the book when you save individual .Rmd files. You can start the server in a work session by using the RStudio add-in ``Preview book'', or from the R console:
+The typical percentage error (CV) of the test was 2.14\%. This means that the variation between pre and post test is 2.14\% of the mean. Compared to \citet{schroeder2007} our results of CV is smaller (\textless{} 6.3\%), and the test seems to be acceptable and reliable. This is a small variation and the test seems to be reliable. It may be explained by elimination of measurement errors because of standardized preparation and test procedures. The small variation that was found in this reliability test may be explained by day-to-day variations which can be physiological and psychological factors, for example motivation and fatigue \citep{schroeder2007}.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{bookdown}\SpecialCharTok{::}\FunctionTok{serve\_book}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
+\hypertarget{lab-rapport}{%
+\chapter{Lab-rapport}\label{lab-rapport}}
 
-\hypertarget{hello-bookdown}{%
-\chapter{Hello bookdown}\label{hello-bookdown}}
+\hypertarget{introduksjon}{%
+\section{Introduksjon}\label{introduksjon}}
 
-All chapters start with a first-level heading followed by your chapter title, like the line above. There should be only one first-level heading (\texttt{\#}) per .Rmd file.
+I dette laboratorieforsøket gjennomførte vi ekstraksjon og analyse av proteiner. Hensikten var å påvise to ulike proteiner, UBF fra cellekjernen og ribosomal s6 fra cytosol. Et protein er sammensatt av flere aminosyrer som til sammen danner flere kjeder, disse kjedene settes deretter sammen og danner sløyfer på kjeden av aminosyrer. Bindinger dannes mellom deler av kjeden som ligger langt fra hverandre og danner til slutt selve proteinet. Sammensetningen av aminosyrene i proteinet vil avgjøre hva slags oppgaver proteinet har. Proteiner kan fungere i nødvendige og kritiske oppgaver i kroppens struktur og funksjon, i tillegg til å være viktige i regulering av vev og organer. Proteiner kan for eksempel fungere som antistoffer for å beskytte kroppen mot virus og bakterier, være enzymer i fordøyelsen vår, fungere som transportproteiner som bringer signaler over cellemembraner \citep{alberts2015} eller være viktige for dannelsen av nye proteiner.
 
-\hypertarget{a-section}{%
-\section{A section}\label{a-section}}
+Proteiner som er viktige for å danne nye proteiner er blant annet UBF og S6. UBF er en transkripsjonsfaktor som finnes i cellekjernen. Denne spiller en viktig rolle i aktiveringen av transkripsjonen av ribosomalt RNA. UBF muliggjør binding av enzymet polymerase 1 for senere å kunne starte transkripsjon av ribosomalt RNA \citep{copenhaver1994}. S6 protein er et ribosomalt protein som er en del av underenheten 40S. Underenheten 40S er en del av ribosomet som finnes i Cytosol. S6 proteinet er involvert i translasjonen av nye proteiner \citep{puighermanal2017}.
 
-All chapter sections start with a second-level (\texttt{\#\#}) or higher heading followed by your section title, like the sections above and below here. You can have as many as you want within a chapter.
+For å påvise proteiner både i cytosol og cellekjernen kreves ulike buffere med tanke på hvor i cellen de befinner seg. For å finne proteiner i cytosol brukes Hepes buffer, og Laemmle buffer for å finne proteiner i cellekjernen. Etter dette ble proteinene separert og analysert ved bruk av western blotting. Vi forventet å finne UBF innenfor 94-97 Kilodaton, og S6 på 32 Kda.
 
-\hypertarget{an-unnumbered-section}{%
-\subsection*{An unnumbered section}\label{an-unnumbered-section}}
-\addcontentsline{toc}{subsection}{An unnumbered section}
+\hypertarget{metode}{%
+\section{Metode}\label{metode}}
 
-Chapters and sections are numbered by default. To un-number a heading, add a \texttt{\{.unnumbered\}} or the shorter \texttt{\{-\}} at the end of the heading, like in this section.
+Homogenisering For å detektere proteiner benyttes ofte en metode som kalles western blotting. Dette er en metode som går ut på å påvise proteiner gjennom binding og gjenkjennelse av antistoffer til ett eller flere proteiner vi er ute etter \citep{bass2017}. I forkant av western blotting må prøvene homogeniseres. Dette innebærer å skille ut de proteinene vi er interessert i. Prøvene vi skulle analysere var muskelfibre fra muskelbiopsi. Vi benyttet to ulike buffere, Hepes og Laemmle, for å å påvise ønskede proteiner. Først ble muskelfibre homogenisert med Hepes, og sentrifugert slik at supernatant og pellet ble dannet. Disse substansene ble skilt fra hverandre, og pellet ble deretter homogenisert med Laemmle og sentrifugert. Igjen dannet det seg supernatant og pellet, som ble separert fra hverandre. Proteinkonsentrasjonene i Hepes og Laemmle ble målt gjennom sammenligning med Bradford reagent (standardkurve).
 
-\hypertarget{cross}{%
-\chapter{Cross-references}\label{cross}}
+Western blotting Når prøvene ble homogenisert og proteinkonsentrasjonen ble beregnet, så ble prøvene loadet i en gel (sds-page). Ladderen gikk i første brønn, og deretter prøvene. Hver prøve var todelt og bestod av en med hepes buffer og en annen med laemmle buffer. Deretter koblet vi på strøm i 40 minutter med 250 volt. Etter proteinene ble separert i gelen var neste fase en electro transfer, her skulle proteinene overføres fra gelen og over til en membran.
 
-Placeholder
+Blocking og antistoffer Membranen ble delt opp i flere deler og hver del ble blandet med et blokkeringsmiddel som bestod av tørrmelk, tween-20 og TBS buffer (Tris-Buffered Saline). Etter 60 minutter ble blokkeringmiddelet fjernet. To ulike primære antistoffer, rRNA s6 og UBF, ble deretter blandet med membranene. Prøvene stod i et kjøleskap på et vippebrett i et døgn, for å sørge for at antistoffene festet seg til proteinene skikkelig. Etter å ha stått i et døgn ble membranen vasket. Sekundære antistoffer ble deretter tilsatt membranene. De sekundære antistoffene gjenkjenner og binder seg til de primære antistoffene. Fordi de sekundære antistoffene gir fra seg lys, kunnen vi indirekte detektere proteinene vi var ute etter når vi tok bilde av membranene. Membranene ble vasket etter å ha stått i 1-2 timer med sekundære antistoffer. Deretter tok vi bilde av hver membran. Bildene ble analysert på en datamaskin, der bildene av membranene ble lagt over bildene av ladderen som var vår referanse. Med linjal sammenlignet vi molekylærvekten til hvert protein.
 
-\hypertarget{chapters-and-sub-chapters}{%
-\section{Chapters and sub-chapters}\label{chapters-and-sub-chapters}}
+\hypertarget{resultater}{%
+\section{Resultater}\label{resultater}}
 
-\hypertarget{captioned-figures-and-tables}{%
-\section{Captioned figures and tables}\label{captioned-figures-and-tables}}
+Resultatene viste at vi fant både UBF og s6 i forsøket. Vi fant både UBF og s6 i Laemmle bufferen. Selv om s6 ble påvist i større grad med Laemmle bufferen, kunne man til dels også se dette proteinet i Hepes bufferen.
 
-\hypertarget{parts}{%
-\chapter{Parts}\label{parts}}
+\hypertarget{diskusjon}{%
+\section{Diskusjon}\label{diskusjon}}
 
-You can add parts to organize one or more book chapters together. Parts can be inserted at the top of an .Rmd file, before the first-level chapter heading in that same file.
+Som forventet fant vi UBF i Laemmle løsningen. Fordi Laemmle er en sterk løsning, skal denne bufferen kunne finne proteiner i cellekjernen. Vi regnet med å finne s6 med Hepes siden dette proteinet finnes i cytosol. Hepes er en svakere buffer enn Leammle og skulle potensielt ha funnet proteinene som befinner seg i cytosol. Vi fant mest av s6 i Leammle. Dette kan skyldes at s6 også finnes i cellekjernen (pga. transport inn og ut av cellekjernen). En annen mulighet er at ikke alle proteiner som ikke befinner seg i cellekjernen ble skilt ut gjennom en gjennomføring av homogenisering med Hepes. Hadde vi gjennomført dette en gang til (homogenisering med Hepes), kan det hende vi hadde funnet mer s6 i Hepes løsningen, fordi vi muligens hadde sikret oss at alle proteiner som ikke finnes i cellekjernen hadde blitt skilt ut. En annen mulig feilkilde kan være at maskinen som tok bilde av membranen ikke klarte å tilpasse seg det sterke lyset fra prøvene som lå i Laemmle bufferen. Dette kan muligens forklare de svake båndene som viste s6 i Hepes prøvene på bildet som ble tatt.
 
-Add a numbered part: \texttt{\#\ (PART)\ Act\ one\ \{-\}} (followed by \texttt{\#\ A\ chapter})
+Western blotting er en metode som innebærer mange ulike steg, og er en kompleks prosess. For at resultatene skal være reliable og valide kreves nøyaktighet. Man må blant annet være konsekvent når det kommer til valg av buffer for homogenisering og ekstraksjon av ønskede proteiner. Gelsammensetningen har noe å si for hvordan proteinene vandrer etter molekylærstørrelse, og både spenningen man tar i bruk og hvor lenge elektroforese og elektrotransfer skal foregå kan påvirke utfallet for proteintransporten. Dersom varigheten er for lang kan små proteiner ``forsvinne'' fordi de potensielt kan vandre ut av gelen og memebranen. I tillegg kan varigheten på blockingen påvirke bindingen av primære antistoffer til målproteinet. For eksempel kan for lite varighet på blockingen føre til at primære antistoffer binder seg til ikke-spesifikke steder på membranen, slik at målproteinet ikke blir påvist. Bildeprogrammet og type kamera for analyse av båndene kan også påvirke resultatene, og er noe man må ha i bakhodet når man fremstiller resultatene. Western blotting må brukes med nøyaktig implementering og forståelse for gjennomføringen for å oppnå riktige og gode analyser av resultatene \citep{bass2017}
 
-Add an unnumbered part: \texttt{\#\ (PART\textbackslash{}*)\ Act\ one\ \{-\}} (followed by \texttt{\#\ A\ chapter})
+\hypertarget{vitenskapetikk}{%
+\chapter{Vitenskapetikk}\label{vitenskapetikk}}
 
-Add an appendix as a special kind of un-numbered part: \texttt{\#\ (APPENDIX)\ Other\ stuff\ \{-\}} (followed by \texttt{\#\ A\ chapter}). Chapters in an appendix are prepended with letters instead of numbers.
+\hypertarget{falsifikasjonisme}{%
+\section{Falsifikasjonisme}\label{falsifikasjonisme}}
 
-\hypertarget{footnotes-and-citations}{%
-\chapter{Footnotes and citations}\label{footnotes-and-citations}}
+Poppers falsifiseringskriterium bygger på at de ulike teoriene som forskerne kommer opp med må være falsifiserbare. Det vil si at hvis enkelte av oppsamlede data strider mot teorien så skal det være mulig å motsi teorien. Teorier som er laget for å passe alle data og ikke kan motsies vil bli kalt for ``psuedo-science'' (``ikke vitenskap''), som forskere tror på, men har ufullstendige svar. Popper kritiserte Marx og Freuds sine teorier. Om teoriene til Marx møtte motstand i testingen, så endret han litt på teorien slik at den kunne forklare motstanden til dataene. På den måten unngikk han å måtte forkaste teorien sin. Freuds sine teorier mente Popper var myter som ikke var mulig å teste, og når teorier ikke kan testes, kan de heller ikke aksepteres som ``science'' (vitenskap). Popper mente at det var et klart skille mellom ``science'' og ``psuedo-science'', og at hans falsifikasjonskriterium løste det han kaller ``problem of demarcation'' \citep{okasha2016, popper1969}. Okasha mente at det ikke i det hele tatt er noe avgrensning på hva som kan kalles vitenskap, da han mener at vitenskap er en heterogen aktivitet. Han viser til at Wittgenstein mente at There is no fixed set of features that define what it is to be a `game'. Rather there is a loose cluster of features most of which are possessed by most games. But any particular game may lack any of the features in the cluster and still be a game. (Okasha, 2016, s. 15) Okasha mente at det samme som Wittgenstein forklarer kan også gjelde for vitenskap, da forskere ikke bare forkaster teorien sin så fort den møter motstand, men av naturlige grunner forsker videre og leter etter andre forklaringer for å støtte om teorien sin. Om teorier bare skulle blitt forkastet så fort den møtte motstand, så ville vitenskapelige funn gått mye tregere. I tillegg ville det vært svært vanskelig å finne teorier som passet til de dataene man har, uten at noen av de strider imot. (Okasha, 2016) Okasha hadde også et eksempel på at på at Poppers falsifiserbarhetkriterium var tvilsom. Adams og Leverrier oppdaget en ny planet ved å bygge videre på Newton's gravitasjonsteori, som på grunn av en feil kunne blitt forkastet. Okasha mente dermed at Popper ikke kunne klandre Marx sin teori, ettersom Adams og Leverrier gjorde akkurat det samme, og som resulterte i et viktig funn. Med dette mener Okasha at det ikke ser ut til at det finnes noe avgrensning om hva som kan kalles vitenskap. Jeg mener at Okasha har rett, da det ikke er logisk å bare deduktivt vise til at den ene eller andre teorien er riktig. Verden er for uforutsigbar til at man kan være 100\% sikker på om teorier er riktige eller ikke. Det er heller ikke riktig å bare avskrive en teori bare fordi den møter litt motstand, for da vektlegger man feil altfor høy verdi i forhold til det riktige. Graden av motstand eller støtte fra dataene teoriene møter på, og antall studier som har undersøkt teorien, vil vise hvor mye statistisk styrke teorien får. Det vil igjen gjøre det lettere å finne ut hvor mye vi kan stole på om denne teorien er sann.
 
-\hypertarget{footnotes}{%
-\section{Footnotes}\label{footnotes}}
+\hypertarget{hd-metoden-og-abduksjon}{%
+\section{HD-metoden og abduksjon}\label{hd-metoden-og-abduksjon}}
 
-Footnotes are put inside the square brackets after a caret \texttt{\^{}{[}{]}}. Like this one \footnote{This is a footnote.}.
+HD-metoden handler om at vi ut ifra tidligere data lager en teori/hypotese som kan føre til nye funn. Om vi kan dedusere/trekke slutninger på om utvalgte data fra teorien er riktig. Hvis de utvalgte dataene gir et bekreftende svar på at teorien stemmer, så vil de dataene gi en induktiv bekreftelse på at teorien er sann. En induktiv bekreftelse vil si at teorien bekreftes til en viss grad. Grunnen til at vi sier at teorien bekreftes til en viss grad er teoriene aldri kan bekreftes til å være 100\% sann. \citet{hempel1966} forklarer dette med at fremtidige relevante data alltids kan gi andre funn enn det dataene hittil har vist. Et eksempel på dette kan være at styrketrening med tunge vekter og få repetisjoner gjør musklene våre sterkere enn styrketrening med lettere vekter og flere repetisjoner. Det er høyt sannsynlig at dette stemmer i og med at mye av forskningen viser dette, men man kan aldri bevise 100\% sikkert at det er sant! For alt vi vet så kan teorien i framtiden få andre resultater som vil gi mindre sjanse for at den teorien stemmer. En kan aldri vite 100\% sikkert med induksjon, men man kan tillegge teorien mer eller mindre troverdighet ut ifra hvor mye støtte den får. HD-metoden har også svakheter, for vi kan ikke dedusere data fra teorien hvis teorien handler om frekvensen for at noe kan skje. Et eksempel kan være frekvensen å få diabetes type 2 etter år med inaktivitet. Hvis man lager en graf som viser at sjansen for å få diabetes type 2 øker med for eksempel 5\% for hvert år med inaktivitet, så vil man få stabil linje. Problemet er at det også er andre teorier som kan spille en rolle i utviklingen av diabetes type 2, blant annet inntak av fet og kaloririk mat. Dette kan gjøre at frekvensen av diabetes type 2 vil se helt annerledes ut i grafen. HD-metoden tar ikke hensyn til at ulike faktorer kan påvirke dataene. Den tar en empirisk test som viser om dataene er riktig overfor teorien om inaktivitet. Det finnes metoder som er ment for å løse problemet til HD-metoden, kalt Abduksjon. Abduksjon er nesten lik som HD-metoden, hvor forskjellen ligger i at Abduksjon utformer teorier som forsøker å gi den beste forklaringen til de aktuelle dataene, istedenfor å dedusere. I teoriene som blir laget kan det legges til ulike årsaker som kan forklare flere data. Teorien vil da få bedre forklaringskraft, men blir til gjengjeld mer avansert jo flere årsaker som legges til grunn for teorien. Meningen med Abduksjon er at teorien som utformes skal ha den beste forklaringskraften, men samtidig være så enkel som mulig (få årsaker i teorien). Om én teori har én årsak som forklarer to data, mens en annen teori har to årsaker som forklarer to data, så er det teorien med færrest årsaker som vinner, da den er enklest, og har like god forklaringskraft som teorien med to årsaker. Om en teori med to årsaker kan forklare tre data, så vil den teorien ha bedre forklaringskraft, men til gjengjeld være mer avansert enn teorien med en årsak. Oppsummert, hvis man skal forklare et fenomen så vil HD-metoden gå ut ifra en teori, dedusere for å se om dataene er riktig, og så gi en induktiv bekreftelse basert på hvor sannsynlig det er at teorien er sann. HD-metoden tar for seg bare en teori om gangen som skal forklare fenomenet, mens Abduksjon sammenligner flere teorier basert på enkelthet og forklaringskraft, og velger den teorien med færrest årsaker og kan forklare mest data.
 
-\hypertarget{citations}{%
-\section{Citations}\label{citations}}
+\hypertarget{replikasjonskrisen}{%
+\section{Replikasjonskrisen}\label{replikasjonskrisen}}
 
-Reference items in your bibliography file(s) using \texttt{@key}.
+Vitenskapen har vært utsatt for en krise når det gjelder å kunne replisere originale forskningsartikler. Mange artikler er rett og slett ikke repliserbare, og \citet{bird2020} har analysert dette og kommet med sin forklaring. Det er en generell frykt for å grave opp i de artiklene som ikke er repliserbare, da det vil svekke tilliten til vitenskapen i offentligheten. For det er mange store studier som viser seg å inneholde falsk positive resultater, når hypotesene som blir brukt i seg selv gir veldig lav sjanse for å gi riktig positive resultater. Det kommer av at forskeren utelukkende baserer seg på et spesielt bevis på det fenomenet som blir forsket på, uavhengig av frekvensen av at fenomenet oppstår. Dette kalles basfrekvensfeilen. I studier som gir falske positive resultater, har ofte ikke forskeren re-testet flere ganger, så da er det stor sjanse for at forskeren kommer fram til et positivt resultat som viser seg å være falsk positiv. Om forskeren derimot velger å re-teste hypotesene, så vil nok forskeren få flere negative resultater, men til gjengjeld kunne få mer riktige resultater. Å replisere studier kan være krevende og dyrt, og som Bird nevner er det også mulighet å feile med å replisere slik at de ikke støtter suksessfulle teorier. At det repliseres lite studier innen medisin mener Bird har en sammenheng med økonomisk og moralsk press for selskaper som skal finne opp medisiner som gir resultater. Andre grunner som Bird diskuterer er lav statistisk styrke, for høy ``alpha'' (signifikantgrense p-verdi), publikasjonsskjevhet, tvilsom forskningspraksis og svindel. Med lav statistisk styrke så blir studier med for få forsøkspersoner trukket frem, for det vil gjøre det vanskeligere for replikasjonsstudiene å finne samme effekt. Det gjør også at vi må ha høy ``alpha''. Med høy statistisk styrke så kan vi senke ``alpha'', og dermed kunne øke PPV (sjansen for at hypotesen faktisk er sann, gitt at testingen har fått positivt utslag). Publikasjonsskjevheten viser at det er for mange studier med positivt resultat som er publisert i forhold til studier med negativt resultat. Grunner til det er at både tidsskrifter og forskere kan bare droppe å publisere artikler som ikke gir et positivt resultat. For hvis studier med negative resultater blir publisert, så vil offentligheten tvile på at hypotesen er sann. Det som er uheldig med det er at falske positive studier kan bli mer akseptert. Tvilsom forskningspraksis og svindel er også grunner til at studier ikke kan repliseres. Først og fremst er det standardiseringen studiene har hatt som er kritikkverdig, men også P-hacking hvor forskerne bruker egne programmer til å lage falske p-verdier for å kunne støtte hypotesen. I psykologiforskningen er det ofte færre folk i forskningsgruppene, så ifølge Bird får studiene i dette fagfeltet ofte gå gjennom uten å bli forøkt replisert. Bird har mye rett i det han kommer med. Det handler mye om skjevhet i publiseringen. De fleste forskere ønsker å finne noe av stor verdi, så da kommer det ikke som noe sjokk at mange legger for stor vekt på de positive resultatene, som oftest vil føre til falsk positive resultater. Som nevnt over er det også mye økonomisk press på selskaper til å finne positive resultater, som vil bidra til å kunne legge for mye vekt på de positive resultatene, samt kunne ty til svindel. Lav statistisk styrke på grunn av for få forsøkspersoner bidrar til at det blir vanskelig replisere studiene, som kan gi både type-I-feil og type-II-feil.
 
-For example, we are using the \textbf{bookdown} package \citep{R-bookdown} (check out the last code chunk in index.Rmd to see how this citation key was added) in this sample book, which was built on top of R Markdown and \textbf{knitr} \citep{xie2015} (this citation was added manually in an external file book.bib).
-Note that the \texttt{.bib} files need to be listed in the index.Rmd with the YAML \texttt{bibliography} key.
-
-The RStudio Visual Markdown Editor can also make it easier to insert citations: \url{https://rstudio.github.io/visual-markdown-editing/\#/citations}
-
-\hypertarget{blocks}{%
-\chapter{Blocks}\label{blocks}}
-
-Placeholder
-
-\hypertarget{equations}{%
-\section{Equations}\label{equations}}
-
-\hypertarget{theorems-and-proofs}{%
-\section{Theorems and proofs}\label{theorems-and-proofs}}
-
-\hypertarget{callout-blocks}{%
-\section{Callout blocks}\label{callout-blocks}}
-
-\hypertarget{sharing-your-book}{%
-\chapter{Sharing your book}\label{sharing-your-book}}
-
-Placeholder
-
-\hypertarget{publishing}{%
-\section{Publishing}\label{publishing}}
-
-\hypertarget{pages}{%
-\section{404 pages}\label{pages}}
-
-\hypertarget{metadata-for-sharing}{%
-\section{Metadata for sharing}\label{metadata-for-sharing}}
-
-  \bibliography{book.bib,packages.bib}
+  \bibliography{book.bib}
 
 \end{document}
