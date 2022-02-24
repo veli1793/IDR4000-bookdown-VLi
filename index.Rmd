@@ -1,6 +1,6 @@
 ---
-title: "Mappeeksamen"
-author: "101"
+title: "Mappeeksamen IDR4000"
+author: "Kandidatnr 101"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
